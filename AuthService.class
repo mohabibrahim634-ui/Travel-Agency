@@ -1,0 +1,31 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.travelmanagementsystem;
+
+/**
+ *
+ * @author Mohab Ibrahim
+ */
+public class Customer extends User {
+
+    private int id;
+    private String name;
+
+    public Customer(int id, String name, String email, String password) {
+        super(email, password, "CUSTOMER"); // ✅ FIXED
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String getRole() {
+        return "CUSTOMER";
+    }
+
+    @Override
+    public String toString() {
+        return "Customer: " + name + " (" + email + ")";
+    }
+}

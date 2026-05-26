@@ -1,0 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.travelmanagementsystem;
+
+/**
+ *
+ * @author Mohab Ibrahim
+ */
+public class Hotel {
+    private String name;
+    private double price;
+    private int rank; // stars
+
+    public Hotel(String name, double price, int rank) {
+        this.name = name;
+        this.price = price;
+        this.rank = rank;
+    }
+
+    Hotel(String name, double price) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+}

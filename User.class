@@ -1,0 +1,80 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.travelmanagementsystem;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class AuthService {
+
+    // email must end with @gmail.com
+    public static boolean isValidEmail(String email) {
+        return email.endsWith("@gmail.com");
+    }
+
+    // check if email already exists
+    public static boolean emailExists(String email) {
+        try {
+            File file = new File("users.txt");
+            if (!file.exists()) return false;
+
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                String[] data = line.split(",");
+                if (data[0].equals(email)) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading file");
+        }
+        return false;
+    }
+
+    // SIGN UP
+    public static boolean signup(String email, String password) {
+
+        if (!isValidEmail(email)) {
+            System.out.println("Email must end with @gmail.com");
+            return false;
+        }
+
+        if (emailExists(email)) {
+            System.out.println("Email already exists");
+            return false;
+        }
+
+        try {
+            FileWriter fw = new FileWriter("users.txt", true);
+            fw.write(email + "," + password + ",CUSTOMER\n");
+            fw.close();
+            System.out.println("Signup successful");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Signup error");
+        }
+        return false;
+    }
+
+    // LOGIN
+    public static String login(String email, String password) {
+        try {
+            File file = new File("users.txt");
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine()) {
+                String[] data = sc.nextLine().split(",");
+                if (data[0].equals(email) && data[1].equals(password)) {
+                    return data[2]; // ADMIN or CUSTOMER
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Login error");
+        }
+        return null;
+    }
+}

@@ -1,0 +1,41 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.travelmanagementsystem;
+
+/**
+ *
+ * @author Mohab Ibrahim
+ */
+import java.util.ArrayList;
+
+public class Location {
+    private String name;
+    private ArrayList<Hotel> hotels = new ArrayList<>();
+    private ArrayList<Activity> activities = new ArrayList<>();
+
+    public Location(String name) {
+        this.name = name;
+    }
+
+    public void addHotel(Hotel h) {
+        hotels.add(h);
+    }
+
+    public void addActivity(Activity a) {
+        activities.add(a);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+}
